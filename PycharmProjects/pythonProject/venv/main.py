@@ -13,7 +13,7 @@ def create_csv(start_date, ticker):
     Spy.to_csv(path)
     return path
 
-#edit the csv by creating weekday, % column
+#edit the csv by creating weekday as a number for easier usage in spreadsheet, % column
 def weekday_as_num(path):
     csv_input = pd.read_csv(path)
     split_string = csv_input['Date']
@@ -26,6 +26,7 @@ def weekday_as_num(path):
     csv_input['WeekdayNum'] = split_values
     csv_input.to_csv(path, index = False)
 
+#add weekday column for user visibility
 def weekday_column(path):
     csv_input = pd.read_csv(path)
     split_string = csv_input['Date']
@@ -38,6 +39,7 @@ def weekday_column(path):
     csv_input['Weekday'] = split_values
     csv_input.to_csv(path, index = False)
 
+#convert week to out of year for quarterly analysis
 def week_of_the_year(path):
     csv_input = pd.read_csv(path)
     split_string = csv_input['Date']
@@ -50,6 +52,7 @@ def week_of_the_year(path):
     csv_input['Week of year'] = split_values
     csv_input.to_csv(path, index = False)
 
+#add year for easier queries
 def year(path):
     csv_input = pd.read_csv(path)
     split_string = csv_input['Date']
@@ -69,6 +72,7 @@ def percentage(path):
     csv_input['Percentage'] = csv_input['Percentage'] * 100
     csv_input.to_csv(path, index = False)
 
+#calls other functions to create csv, add all columns as default
 def update(start_date, ticker):
     path = create_csv(start_date, ticker)
     weekday_as_num(path)
@@ -79,6 +83,7 @@ def update(start_date, ticker):
     print('done with ticker: ' + ticker + ', starting at ' + start_date)
 
 def main():
+    #example
     start_date = '1994-01-01'
     ticker = 'SPY'
     update(start_date, ticker)
