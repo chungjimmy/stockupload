@@ -12,7 +12,7 @@ def main():
     # example
     startDate = '1996-01-01'
     ticker = 'AMC'
-    path = 'C:/Users/Alienwear/Desktop/Stock Data/' + ticker + '_' + startDate + '.csv'
+    path = ''
     update(startDate, ticker)
     runAnalysis(path, startDate, ticker)
 
